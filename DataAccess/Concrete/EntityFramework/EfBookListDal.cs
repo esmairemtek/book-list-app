@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfBorrowingRecordDal : EfEntityRepositoryBase<BorrowingRecord, LibraryContext>, IBorrowingRecordDal
+    public class EfBookListDal : EfEntityRepositoryBase<BookList, LibraryContext>, IBookListDal
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IBorrowingRecordDal : IEntityRepository<BorrowingRecord>
+    public interface IBookListDal : IEntityRepository<BookList>
     {
     }
 }
