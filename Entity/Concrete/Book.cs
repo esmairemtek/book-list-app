@@ -14,7 +14,7 @@ namespace Entity.Concrete
         public string ISBN { get; set; }
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
-        public ICollection<BookAuthor> BookAuthors { get; set; } = new List<BookAuthor>();
-        public ICollection<BorrowingRecord> BorrowingRecords { get; set; } = new List<BorrowingRecord>();
+
+        public int[] AuthorIds { get; set; }
     }
 }
