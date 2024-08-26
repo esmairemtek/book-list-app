@@ -26,12 +26,49 @@ namespace DataAccess.Concrete.InMemory
 
             Authors = new List<Author>
         {
-            new Author { Id = 1, Name = "Isaac Asimov" },
-            new Author { Id = 2, Name = "J.R.R. Tolkien" },
-            new Author { Id = 3, Name = "Agatha Christie" },
-            new Author { Id = 4, Name = "Arthur C. Clarke" },
-            new Author { Id = 5, Name = "H.G. Wells" },
-            new Author { Id = 6, Name = "George Orwell" }
+            new Author
+            {
+                Id = 1,
+                Name = "Isaac Asimov",
+                BirthDate = new DateTime(1920, 1, 2),
+                Biography = "Isaac Asimov was an American writer and professor of biochemistry, known for his works of science fiction and popular science books. He was a prolific author and is best known for the 'Foundation' and 'Robot' series."
+            },
+            new Author
+            {
+                Id = 2,
+                Name = "J.R.R. Tolkien",
+                BirthDate = new DateTime(1892, 1, 3),
+                Biography = "J.R.R. Tolkien was an English writer, poet, philologist, and academic. He is best known for his high fantasy works 'The Hobbit' and 'The Lord of the Rings'."
+            },
+            new Author
+            {
+                Id = 3,
+                Name = "Agatha Christie",
+                BirthDate = new DateTime(1890, 9, 15),
+                Biography = "Agatha Christie was an English writer known for her 66 detective novels and 14 short story collections, particularly those revolving around fictional detectives Hercule Poirot and Miss Marple."
+            },
+            new Author
+            {
+                Id = 4,
+                Name = "Arthur C. Clarke",
+                BirthDate = new DateTime(1917, 12, 16),
+                Biography = "Arthur C. Clarke was a British science fiction writer, futurist, and inventor. He is best known for his novel '2001: A Space Odyssey', which was developed concurrently with the Stanley Kubrick film."
+            },
+            new Author
+            {
+                Id = 5,
+                Name = "H.G. Wells",
+                BirthDate = new DateTime(1866, 9, 21),
+                Biography = "H.G. Wells was an English writer best known for his works of science fiction, including 'The War of the Worlds', 'The Time Machine', and 'The Invisible Man'."
+            },
+            new Author
+            {
+                Id = 6,
+                Name = "George Orwell",
+                BirthDate = new DateTime(1903, 6, 25),
+                Biography = "George Orwell was an English novelist, essayist, and critic. He is best known for his dystopian novels '1984' and 'Animal Farm'."
+            },
+
         };
 
             Books = new List<Book>
