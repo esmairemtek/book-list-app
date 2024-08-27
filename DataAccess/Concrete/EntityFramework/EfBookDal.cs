@@ -16,19 +16,16 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (LibraryContext context = new LibraryContext())
             {
-                var result = from book in context.Books
-                             join genre in context.Genres
-                             on book.GenreId equals genre.Id
-                             select new BookDetailDto
-                             {
-                                 BookId = book.Id,
-                                 Title = book.Title,
-                                 GenreName = genre.Name,
-                                 AuthorNames = (from author in context.Authors
-                                                where book.AuthorIds.Contains(author.Id)
-                                                select author.Name).ToArray()
-                             };
-                return result.ToList();
+                var result = context.Books
+                    .Select(book => new BookDetailDto
+                    {
+                        BookId = book.Id,
+                        Title = book.Title,
+                        GenreNames = book.BookGenres.Select(bg => bg.Genre.Name).ToArray(),
+                        AuthorNames = book.BookAuthors.Select(ba => ba.Author.Name).ToArray(),
+                        PublishDate = book.PublishDate
+                    }).ToList();
+                return result;
             }
         }
     }
