@@ -11,7 +11,10 @@ namespace Entity.Concrete
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateOnly BirthDate { get; set; }
         public string Biography { get; set; }
+
+        // navigation prop
+        public ICollection<BookAuthor> BookAuthors { get; set; }
     }
 }

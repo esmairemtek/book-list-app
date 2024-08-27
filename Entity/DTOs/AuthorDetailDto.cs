@@ -11,7 +11,7 @@ namespace Entity.DTOs
     {
         public int AuthorId { get; set; }
         public string Name { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateOnly BirthDate { get; set; }
         public string Biography { get; set; }
         public string[] BookNames { get; set; }
     }

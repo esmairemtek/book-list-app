@@ -11,7 +11,12 @@ namespace Entity.Concrete
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public int GenreId { get; set; }
-        public int[] AuthorIds { get; set; }
+        public DateOnly PublishDate { get; set; }
+        
+        // navigation properties
+        public ICollection<BookGenre> BookGenres { get; set; } 
+        public ICollection<BookAuthor> BookAuthors { get; set; }
+        public ICollection<BookListBook> BookListBooks { get; set; }
+
     }
 }

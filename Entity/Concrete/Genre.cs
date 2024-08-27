@@ -11,5 +11,8 @@ namespace Entity.Concrete
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        // navigation prop
+        public ICollection<BookGenre> BookGenres { get; set; }
     }
 }

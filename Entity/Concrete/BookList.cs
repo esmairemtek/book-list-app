@@ -12,6 +12,9 @@ namespace Entity.Concrete
         public int Id { get; set; }
         public string Title { get; set; }
         public int UserId { get; set; }
-        public int[] BookIds { get; set; }
+
+        // navigation props
+        public User User { get; set; }
+        public ICollection<BookListBook> BookListBooks { get; set; }
     }
 }

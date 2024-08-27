@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace Entity.DTOs
 {
-    public class BookDetailDto : IDto
+    public class BookListDetailDto : IDto
     {
-        public int BookId { get; set; }
+        public int BookListId { get; set; }
         public string Title { get; set; }
-        public string[] GenreNames { get; set; }
-        public string[] AuthorNames { get; set; }
-        public DateOnly PublishDate { get; set; }
+        public string UserName { get; set; }
+        public BookDetailDto[] BookDetails { get; set; }
     }
 }
