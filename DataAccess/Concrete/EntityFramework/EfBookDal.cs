@@ -2,6 +2,7 @@
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entity.Concrete;
 using Entity.DTOs.Details;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,29 @@ namespace DataAccess.Concrete.EntityFramework
         public EfBookDal(LibraryContext context) : base(context)
         {
         }
+
+        public override Book Get(Expression<Func<Book, bool>> filter)
+        {
+            return _context.Books
+                .Include(b => b.Authors)
+                .Include(b => b.Genres)
+                .SingleOrDefault(filter);
+        }
+
+        public override List<Book> GetAll(Expression<Func<Book, bool>> filter)
+        {
+            IQueryable<Book> query = _context.Books
+                                        .Include(b => b.Authors)
+                                        .Include(b => b.Genres);
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            return query.ToList();
+        }
+
         public List<BookDetailDto> GetBookDetails(Expression<Func<Book, bool>> filter = null)
         {
             var query = _context.Books.AsQueryable();

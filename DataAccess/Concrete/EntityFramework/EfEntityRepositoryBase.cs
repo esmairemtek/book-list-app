@@ -34,13 +34,12 @@ namespace DataAccess.Concrete.EntityFramework
             _context.SaveChanges();
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        public virtual TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
-            
             return _context.Set<TEntity>().SingleOrDefault(filter);
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public virtual List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             return filter == null 
             ? _context.Set<TEntity>().ToList() 

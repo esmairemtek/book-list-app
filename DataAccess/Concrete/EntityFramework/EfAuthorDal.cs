@@ -2,6 +2,7 @@
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entity.Concrete;
 using Entity.DTOs.Details;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,27 @@ namespace DataAccess.Concrete.EntityFramework
         public EfAuthorDal(LibraryContext context) : base (context)
         {
         }
+
+        public override Author Get(Expression<Func<Author, bool>> filter)
+        {
+            return _context.Authors
+                .Include(a => a.Books)
+                .SingleOrDefault(filter);
+        }
+
+        public override List<Author> GetAll(Expression<Func<Author, bool>> filter)
+        {
+            IQueryable<Author> query = _context.Authors
+                                        .Include(a => a.Books);
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            return query.ToList();
+        }
+
         public List<AuthorDetailDto> GetAuthorDetails(Expression<Func<Author, bool>> filter = null)
         {
             var query = _context.Authors.AsQueryable();
