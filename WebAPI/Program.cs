@@ -1,4 +1,8 @@
 
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
+using Business.DependencyResolvers;
+
 namespace WebAPI
 {
     public class Program
@@ -14,6 +18,14 @@ namespace WebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+            builder.Host.ConfigureContainer<ContainerBuilder>(options =>
+            {
+                options.RegisterModule(new AutofacBusinessModule());
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -26,7 +38,6 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
