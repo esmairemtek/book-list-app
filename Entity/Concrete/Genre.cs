@@ -13,6 +13,6 @@ namespace Entity.Concrete
         public string Name { get; set; }
 
         // navigation prop
-        public ICollection<BookGenre> BookGenres { get; set; }
+        public ICollection<Book> Books { get; set; }
     }
 }

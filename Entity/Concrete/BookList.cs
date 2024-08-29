@@ -15,6 +15,6 @@ namespace Entity.Concrete
 
         // navigation props
         public User User { get; set; }
-        public ICollection<BookListBook> BookListBooks { get; set; }
+        public ICollection<Book> Books { get; set; }
     }
 }

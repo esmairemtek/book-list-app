@@ -14,9 +14,8 @@ namespace Entity.Concrete
         public DateOnly PublishDate { get; set; }
         
         // navigation properties
-        public ICollection<BookGenre> BookGenres { get; set; } 
-        public ICollection<BookAuthor> BookAuthors { get; set; }
-        public ICollection<BookListBook> BookListBooks { get; set; }
-
+        public ICollection<Genre> Genres { get; set; } 
+        public ICollection<Author> Authors { get; set; }
+        public ICollection<BookList> BookLists { get; set; }
     }
 }
