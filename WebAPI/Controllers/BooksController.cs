@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Business.Abstract;
 using Entity.Concrete;
+using Entity.DTOs.Requests;
+using Entity.DTOs.Requests.Book;
 
 namespace WebAPI.Controllers
 {
@@ -19,7 +21,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _bookService.GetAll();
+            var result = _bookService.GetAllDto();
             if (result.Success)
             {
                 return Ok(result);
@@ -30,7 +32,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            var result = _bookService.GetById(id);
+            var result = _bookService.GetDtoById(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -38,10 +40,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getbygenreid")]
+        [HttpGet("getbygenre")]
         public IActionResult GetByGenreId(int id)
         {
-            var result = _bookService.GetByGenreId(id);
+            var result = _bookService.GetDtoByGenreId(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -49,21 +51,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getbyauthorid")]
+        [HttpGet("getbyauthor")]
         public IActionResult GetByAuthorId(int id)
         {
-            var result = _bookService.GetByAuthorId(id);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpGet("getbookdetails")]
-        public IActionResult GetBookDetails()
-        {
-            var result = _bookService.GetBookDetails();
+            var result = _bookService.GetDtoByAuthorId(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -72,9 +63,31 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Book book)
+        public IActionResult Add(AddBookRequest bookRequest)
         {
-            var result = _bookService.Add(book);
+            var result = _bookService.Add(bookRequest);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPut("update")]
+        public IActionResult Update(UpdateBookRequest bookRequest)
+        {
+            var result = _bookService.Update(bookRequest);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(int id)
+        {
+            var result = _bookService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);
