@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Entity.DTOs.Requests.Book
 {
-    public class UpdateBookRequestDto : IDto
+    public class AddBookRequest : IDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public DateOnly PublishDate { get; set; }
         public int[] AuthorIds { get; set; }
